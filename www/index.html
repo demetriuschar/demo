@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta name="theme-color" content="#1f64dc"> 
+    <title>Home</title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+  
+    <script src="lib/hammer.js"></script>
+      <!-- Lib for HTML 5 Components http://materializecss.com/  -->
+    <script src="lib/materialize.min.js"></script>
+      <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script> 
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- external directives see file with comments for details -->
+    <script src="js/ext-scripts.js"></script>
+
+    <!-- Working Services Controllers Routes and Components of the applcation-->
+    <script src="lib/angular-cache.js"></script>
+    <script src="js/app.services.js"></script>
+    <script src="js/app.controller.js"></script>
+    <script src="js/app.api.js"></script>
+    <script src="js/app.components.js"></script>
+    <!--  app's js // Applcaition run file and router  -->
+    <script src="js/app.js"></script>
+  </head>
+<body ng-app="icbg">
+<!-- Slide out side Nav-->
+<nav id="nlDrawer">
+  <ul class="drawer">
+    <div class="inner">
+      <!-- Weather Widget see app.controller weatherController for Options -->
+      <div class="source" ng-include="'views/weather.html'"></div>
+    </div>
+  <!-- nav links-->
+    <li  ui-sref="app.home" class="" ion-ripple><a> <i class="material-icons">home</i>Home</a></li>
+    <li ui-sref="app.media" class="" ion-ripple><a><i class="ion-icon ion-images"></i>Media</a></li>
+    <li ui-sref="app.page({id:'519'})" ion-ripple> <a ><i class="material-icons">info_outline</i> Event Rules</a></li>
+    <li ui-sref="app.page({id:'632'})"><a > <i class="material-icons">loyalty</i> Corporate Partners </a></li>
+    <li ng-click="contact()"   ><a  ion-ripple><i class="material-icons">description</i>  History</a></li>
+  </ul>
+  <div class="footer row">
+    <div class="col">      
+    <img src="icon.png" style="width: 30px; ">
+    </div>
+    <div class="col-90 footertext">
+    Intra Regional Central Bank Games 
+    </div>
+  </div>
+</nav>   
+
+<!-- main Header nav hide-nav Component to controller header status-->
+<hide-nav data-status="status">
+<button class="button icon material transparent back_button" ><i class="material-icons">arrow_back</i></button>  
+<ion-header-bar align-title="center" class=" bar-eccb nav-shadow" style="transition:.35s all linear; transform:translateY(-56px); opacity:0; box-shadow:none !important; background-color:transparent !important;">
+  <!-- drawer button-->
+  <button class="button icon material drawer--button transparent svg-icon drawer--button-open"  >
+      <?xml version="1.0" encoding="utf-8"?>
+      <!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+         viewBox="0 0 48 48" width="28px" height="30px" style="enable-background:new 0 0 48 48;" xml:space="preserve">
+      <style type="text/css">
+        .st0{fill:none;}
+        .st1{fill:#FFFFFF;}
+      </style>
+      <path class="st0" d="M0,0h48v48H0V0z"/>
+      <path class="st1" d="M6,35.8h21.5v-3.7H6V35.8z M6,26h36v-4H6V26z M6,12v4h36v-4H6z"/>
+      </svg>
+  </button>
+  <!-- App Bar Title-->
+  <div class="title title-center" ng-cloak>{{AppTitle}}</div>
+  <!-- Drop Down Structure (see element outside of ion-header)-->
+  <button class="button icon material transparent dropdown-trigger" data-target='topnav' ion-ripple><i class="material-icons">more_vert</i></button>
+</ion-header-bar>
+</hide-nav>
+
+<!-- nav view / uiview renders external views inside this element -->            
+<ion-nav-view> </ion-nav-view>
+
+<!-- Dropdown Structure -->
+<ul id='topnav' class='dropdown-content'>
+  <li><a ui-sref="app.page({id:'519'})">Event Rules</a></li>
+  <li><a  ng-click="signout()">Logout</a></li>
+</ul>
+
+<!-- Footer /  Bottom Navigation Controlled bye hide-nav component as well -->
+<div class="tabs tabs-icon-top footer--nav" style="height:0px; transition:.35s all linear; box-shadow:none !important; ">
+    <a class="tab-item" ion-ripple ion-ripple-color="#387ef5" ui-sref="app.home" ui-sref-active="active">
+      <i class="icon home custom-icon"></i>
+      Home
+    </a>
+
+    <a class="tab-item "  ion-ripple ion-ripple-color="#387ef5" ui-sref="app.events" ui-sref-active="active">
+      <i class="icon event_note custom-icon"></i>
+      Schedule
+    </a>
+
+    <a class="tab-item scores "  ion-ripple ion-ripple-color="#387ef5" ui-sref="app.scores" ui-sref-active="active">
+      <?xml version="1.0" encoding="UTF-8"?>
+      <svg  class="score-board" scenable-background="new 0 0 512 512" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+      <path d="m469.97 75.985h-116.62v-25.216c0-11.605-9.408-21.013-21.013-21.013s-21.013 9.408-21.013 21.013v25.216h-110.67v-25.216c0-11.605-9.408-21.013-21.013-21.013s-21.013 9.408-21.013 21.013v25.216h-116.61c-23.174 0-42.027 18.853-42.027 42.027v322.21c0 23.174 18.853 42.027 42.027 42.027h427.95c23.174 0 42.027-18.853 42.027-42.027v-322.21c0-23.174-18.853-42.027-42.027-42.027zm-427.95 114.87v-72.847l116.61-7e-3v19.62c0 11.605 9.408 21.013 21.013 21.013s21.013-9.408 21.013-21.013v-19.621l110.67-6e-3v19.627c0 11.605 9.408 21.013 21.013 21.013s21.013-9.408 21.013-21.013v-19.629l116.62-7e-3v0.024 72.847c-18.792-1e-3 -409.19-1e-3 -427.94-1e-3zm192.96 249.36h-192.96v-207.33h192.96v207.33zm234.99 0h-192.96v-207.33h192.96v207.33z"/>
+      <path d="m159.9 299.5c-13.867-21.128-39.257-21.367-53.278 0-13.111 19.069-12.829 49.983 0 68.643 14.155 21.236 39.103 21.263 53.278 0 12.759-18.993 12.942-49.381 0-68.643zm-13.213 59.739c-8.047 11.931-18.766 11.8-26.997 0-9.068-13.601-9.289-36.713 0-50.98 8.108-11.35 18.614-12.139 26.997 0 9.282 14.253 9.075 37.371 0 50.98z"/>
+      <path d="m394.89 299.5c-13.866-21.128-39.256-21.367-53.278 0-13.111 19.069-12.829 49.983 0 68.643 14.155 21.236 39.103 21.263 53.278 0 12.759-18.993 12.942-49.381 0-68.643zm-13.213 59.739c-8.045 11.931-18.765 11.8-26.997 0-9.068-13.603-9.289-36.713 0-50.98 8.108-11.35 18.614-12.139 26.997 0 9.281 14.253 9.075 37.371 0 50.98z"/>
+      </svg>
+      Scores
+    </a>
+
+    <a class="tab-item "  ion-ripple ion-ripple-color="#387ef5" ui-sref="app.teams" ui-sref-active="active">
+      <?xml version="1.0" encoding="UTF-8"?>
+      <i class="icon team custom-icon"></i>
+      
+      Teams
+    </a>
+</div>
+
+      
+ </body>
+
+</html>
